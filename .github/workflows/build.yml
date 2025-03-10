@@ -26,6 +26,7 @@ jobs:
       contents: read
       packages: write
       id-token: write
+    secrets: inherit
   
   nvidia:
     name: Nvidia
@@ -38,6 +39,7 @@ jobs:
       contents: read
       packages: write
       id-token: write
+    secrets: inherit
   
   server:
     name: Server
@@ -50,6 +52,7 @@ jobs:
       contents: read
       packages: write
       id-token: write
+    secrets: inherit
 
   cosmic:
     name: Cosmic
@@ -62,3 +65,4 @@ jobs:
       contents: read
       packages: write
       id-token: write
+    secrets: inherit
