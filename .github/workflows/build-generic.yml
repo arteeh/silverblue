@@ -1,22 +1,21 @@
 ---
 name: Build Custom Image
 on:
-  pull_request:
-    branches:
-      - main
-  schedule:
-    - cron: '05 10 * * *'  # 10:05am UTC everyday
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '**/README.md'
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      imagename:
+        required: true
+        type: string
+      imagedesc:
+        required: true
+        type: string
+      containerfilepath:
+        required: true
+        type: string
 
 env:
-  BASE_IMAGE: "ghcr.io/ublue-os/silverblue-main:latest" # the image that our image will use as a base
-  IMAGE_NAME: "${{ github.event.repository.name }}"  # the name of the image produced by this build, matches repo names
-  IMAGE_DESC: "My Customized Universal Blue Image"
+  IMAGE_NAME: "${{ inputs.imagename }}"  # the name of the image produced by this build, matches repo names
+  IMAGE_DESC: "${{ inputs.imagedesc }}"
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"  # do not edit
   ARTIFACTHUB_LOGO_URL: "https://avatars.githubusercontent.com/u/120078124?s=200&v=4"  # You should put your own image here so that you get a fancy profile image on https://artifacthub.io/!
 
@@ -92,15 +91,13 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           containerfiles: |
-            ./Containerfile
+            ${{ inputs.containerfilepath }}
           # Postfix image name with -custom to make it a little more descriptive
           # Syntax: https://docs.github.com/en/actions/learn-github-actions/expressions#format
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
           oci: false
-          build-args: |
-            BASE_IMAGE=${{ env.BASE_IMAGE }}
 
       # Rechunk is a script that we use on Universal Blue to make sure there isnt a single huge layer when your image gets published.
       # This does not make your image faster to download, just provides better resumability and fixes a few errors.
