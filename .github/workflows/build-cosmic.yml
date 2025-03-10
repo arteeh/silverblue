@@ -21,3 +21,7 @@ jobs:
       imagename: "${{ github.event.repository.name }}-cosmic"
       imagedesc: "My Linux desktop configuration - with COSMIC instead of GNOME"
       containerfilepath: "./Containerfile-Cosmic"
+    permissions:
+      contents: read
+      packages: write
+      id-token: write

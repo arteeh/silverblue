@@ -21,3 +21,7 @@ jobs:
       imagename: "${{ github.event.repository.name }}"
       imagedesc: "My Linux desktop configuration"
       containerfilepath: "./Containerfile"
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
