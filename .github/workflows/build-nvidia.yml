@@ -1,5 +1,5 @@
 ---
-name: Cosmic
+name: Nvidia
 on:
   pull_request:
     branches:
@@ -18,9 +18,9 @@ jobs:
     name: Build
     uses: ./.github/workflows/build-generic.yml
     with:
-      imagename: "${{ github.event.repository.name }}-cosmic"
-      imagedesc: "My Linux desktop image - with COSMIC instead of GNOME"
-      containerfilepath: "./Containerfile-Cosmic"
+      imagename: "${{ github.event.repository.name }}-nvidia"
+      imagedesc: "My Linux desktop image - plus NVIDIA"
+      containerfilepath: "./Containerfile-Nvidia"
     permissions:
       contents: read
       packages: write

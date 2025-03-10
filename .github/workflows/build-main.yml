@@ -19,7 +19,7 @@ jobs:
     uses: ./.github/workflows/build-generic.yml
     with:
       imagename: "${{ github.event.repository.name }}"
-      imagedesc: "My Linux desktop configuration"
+      imagedesc: "My Linux desktop image"
       containerfilepath: "./Containerfile"
     permissions:
       contents: read
