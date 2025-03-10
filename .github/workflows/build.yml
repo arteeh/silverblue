@@ -1,0 +1,64 @@
+---
+name: Build
+on:
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '05 10 * * *'  # 10:05am UTC everyday
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/README.md'
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    name: Main
+    uses: ./.github/workflows/build-generic.yml
+    with:
+      imagename: "${{ github.event.repository.name }}"
+      imagedesc: "My Linux desktop image"
+      containerfilepath: "./Containerfile"
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+  
+  build:
+    name: Nvidia
+    uses: ./.github/workflows/build-generic.yml
+    with:
+      imagename: "${{ github.event.repository.name }}-nvidia"
+      imagedesc: "My Linux desktop image - plus NVIDIA"
+      containerfilepath: "./Containerfile-Nvidia"
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+  
+  build:
+    name: Server
+    uses: ./.github/workflows/build-generic.yml
+    with:
+      imagename: "${{ github.event.repository.name }}-server"
+      imagedesc: "My Linux server image"
+      containerfilepath: "./Containerfile-Server"
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+  build:
+    name: Cosmic
+    uses: ./.github/workflows/build-generic.yml
+    with:
+      imagename: "${{ github.event.repository.name }}-cosmic"
+      imagedesc: "My Linux desktop image - with COSMIC instead of GNOME"
+      containerfilepath: "./Containerfile-Cosmic"
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
