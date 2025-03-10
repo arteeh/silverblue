@@ -15,7 +15,7 @@ on:
 
 jobs:
 
-  build:
+  main:
     name: Main
     uses: ./.github/workflows/build-generic.yml
     with:
@@ -27,7 +27,7 @@ jobs:
       packages: write
       id-token: write
   
-  build:
+  nvidia:
     name: Nvidia
     uses: ./.github/workflows/build-generic.yml
     with:
@@ -39,7 +39,7 @@ jobs:
       packages: write
       id-token: write
   
-  build:
+  server:
     name: Server
     uses: ./.github/workflows/build-generic.yml
     with:
@@ -51,7 +51,7 @@ jobs:
       packages: write
       id-token: write
 
-  build:
+  cosmic:
     name: Cosmic
     uses: ./.github/workflows/build-generic.yml
     with:
