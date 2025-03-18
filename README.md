@@ -1,6 +1,4 @@
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/silverblue)](https://artifacthub.io/packages/search?repo=silverblue)
-
-## My desktop Linux OS, based on UBlue
+## My desktop Linux OS
 
 This is essentially Fedora Silverblue, but with the following differences:
 
