@@ -1,4 +1,4 @@
-FROM ghcr.io/ublue-os/cosmic:41
+FROM ghcr.io/ublue-os/cosmic-atomic-main:latest
 
 COPY b-add-tailscale.sh /tmp/b-add-tailscale.sh
 COPY b-remove-firefox.sh /tmp/b-remove-firefox.sh
