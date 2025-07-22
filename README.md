@@ -3,7 +3,7 @@
 This is essentially Fedora Silverblue, but with the following differences:
 
 - Baked in extensions are removed. You can install extensions using the Extension Manager app.
-- Baked in apps are mostly removed except for Settings, Software, Disks and the file manager. You can install apps using the app store.
+- Baked in apps are removed except for Settings and the file manager. You can install apps using flatpak or the Warehouse app.
 - Tailscale and Docker are included.
 
 There's an NVIDIA version which includes its drivers, a server version that doesn't have a desktop, and lastly a version that uses the Cosmic desktop environment.
