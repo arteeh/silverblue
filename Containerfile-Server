@@ -1,9 +1,9 @@
-FROM ghcr.io/ublue-os/base-main:latest
+FROM quay.io/fedora-ostree-desktops/base-atomic:42
 
-COPY b-add-docker.sh /tmp/b-add-docker.sh
-COPY b-add-tailscale.sh /tmp/b-add-tailscale.sh
+COPY b-docker.sh /tmp/b-docker.sh
+COPY b-tailscale.sh /tmp/b-tailscale.sh
 
 RUN mkdir -p /var/lib/alternatives && \
-    /tmp/b-add-docker.sh && \
-    /tmp/b-add-tailscale.sh && \
+    /tmp/b-docker.sh && \
+    /tmp/b-tailscale.sh && \
     ostree container commit

@@ -1,13 +1,13 @@
-FROM ghcr.io/ublue-os/cosmic-atomic-main:latest
+FROM quay.io/fedora-ostree-desktops/cosmic-atomic:42
 
-COPY b-add-docker.sh /tmp/b-add-docker.sh
-COPY b-add-tailscale.sh /tmp/b-add-tailscale.sh
-COPY b-remove-cosmicstuff.sh /tmp/b-remove-cosmicstuff.sh
-COPY b-remove-firefox.sh /tmp/b-remove-firefox.sh
+COPY b-docker.sh /tmp/b-docker.sh
+COPY b-tailscale.sh /tmp/b-tailscale.sh
+COPY b-firefox.sh /tmp/b-firefox.sh
+COPY b-cosmic.sh /tmp/b-cosmic.sh
 
 RUN mkdir -p /var/lib/alternatives && \
-    /tmp/b-add-docker.sh && \
-    /tmp/b-add-tailscale.sh && \
-    /tmp/b-remove-cosmicstuff.sh && \
-    /tmp/b-remove-firefox.sh && \
+    /tmp/b-docker.sh && \
+    /tmp/b-tailscale.sh && \
+    /tmp/b-firefox.sh && \
+    /tmp/b-cosmic.sh && \
     ostree container commit
