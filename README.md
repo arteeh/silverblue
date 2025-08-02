@@ -1,3 +1,7 @@
+## Inactive
+
+I've decided to move away from UBlue and back to Fedora. I'll leave this repo up as an example for anyone to try making their own OS images.
+
 ## My desktop Linux OS
 
 This is essentially Fedora Silverblue, but with the following differences:
